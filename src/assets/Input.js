@@ -12,6 +12,7 @@ export default class Input extends React.Component {
       name,
       datatestid,
       minLength,
+      className,
     } = this.props;
     return (
       <div>
@@ -25,6 +26,7 @@ export default class Input extends React.Component {
             name={ name }
             minLength={ minLength }
             data-testid={ datatestid }
+            className={className}
           />
         </label>
       </div>
