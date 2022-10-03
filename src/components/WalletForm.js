@@ -62,12 +62,14 @@ class WalletForm extends Component {
     const { option, editor } = this.props;
     const { value, description, currency, method, tag } = this.state;
     return (
-      <div>
+      <div className='container mt-2 text-light text-center'>
+        <div className='container d-flex justify-content-center gap-5 flex-wrap'>
         <Input
           datatestid="value-input"
           value={ value }
           name="value"
           onChange={ this.handleChange }
+          className="form-control"
         >
           Valor:
         </Input>
@@ -76,6 +78,7 @@ class WalletForm extends Component {
           value={ description }
           name="description"
           onChange={ this.handleChange }
+          className="form-control"
         >
           Descrição:
         </Input>
@@ -87,6 +90,7 @@ class WalletForm extends Component {
             onChange={ this.handleChange }
             value={ currency }
             name="currency"
+            className='form-select'
           >
             {option.map((e) => (
               <option key={ e }>{e}</option>
@@ -101,6 +105,7 @@ class WalletForm extends Component {
             onChange={ this.handleChange }
             value={ method }
             name="method"
+            className='form-select'
           >
             <option>Dinheiro</option>
             <option>Cartão de crédito</option>
@@ -115,6 +120,7 @@ class WalletForm extends Component {
             onChange={ this.handleChange }
             value={ tag }
             name="tag"
+            className='form-select'
           >
             <option>Alimentação</option>
             <option>Lazer</option>
@@ -126,8 +132,9 @@ class WalletForm extends Component {
         {editor ? (
           <Button onClick={ this.editExpense }>Editar despesa</Button>
         ) : (
-          <Button onClick={ this.addExpense }>Adicionar despesa</Button>
+          <Button onClick={ this.addExpense } className="btn btn-warning w-50">Adicionar despesa</Button>
         )}
+      </div>
       </div>
     );
   }

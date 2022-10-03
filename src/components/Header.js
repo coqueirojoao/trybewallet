@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import wallet from '../media/wallet.svg'
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -24,17 +25,16 @@ class Header extends Component {
     } = this.props;
     const initialValue = 0;
     return (
-      <div>
-        <h1>Header</h1>
+      <div className='container-fluid text-light d-flex justify-content-between align-items-baseline p-5 fs-3'>
+        <img src={wallet} width={50} />
+        <span data-testid="total-field" className='text-success'>
+          {expenses.length === 0 ? `${initialValue.toFixed(2)} BRL` : `${this.handleTotalExpenses()} BRL`}
+        </span>
         <span data-testid="email-field">
           Email:
           {' '}
           {email}
         </span>
-        <span data-testid="total-field">
-          {expenses.length === 0 ? initialValue.toFixed(2) : this.handleTotalExpenses()}
-        </span>
-        <span data-testid="header-currency-field">BRL</span>
       </div>
     );
   }

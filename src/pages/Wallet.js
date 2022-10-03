@@ -15,8 +15,10 @@ class Wallet extends React.Component {
   render() {
     return (
       <div>
+        <div className='shadow-lg pb-5 rounded'>
         <Header />
         <WalletForm />
+        </div>
         <Table />
       </div>
     );

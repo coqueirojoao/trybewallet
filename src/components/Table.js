@@ -20,7 +20,7 @@ class Table extends Component {
       expensesInfo: { expenses },
     } = this.props;
     return (
-      <div>
+      <div className=''>
         <table>
           <thead>
             <tr>
