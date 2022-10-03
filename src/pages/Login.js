@@ -57,9 +57,9 @@ class Login extends React.Component {
         <div className={`container d-flex flex-column align-items-center justify-content-center gap-3 shadow-lg p-5 ${wSize <= 988 ? 'w-100' : 'w-50'} rounded border-top border-secondary text-light text-center`}>
         <div className={`container d-flex ${wSize <= 988 ? 'justify-content-around' : 'justify-content-evenly'} align-items-baseline`}>
         <p className='display-3'>Trybe <span className='text-success'>Wallet</span></p>
-        <img src={wallet} width={wSize <= 988 ? 30 : 50} />
+        <img src={wallet} width={wSize <= 988 ? 30 : 50} alt="loginlogowallet" />
         </div>
-        <img src={loginImg} />
+        <img src={loginImg} alt="loginlogoanimation" />
         <Input
           datatestid="email-input"
           type="email"

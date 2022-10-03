@@ -25,16 +25,16 @@ class Header extends Component {
     } = this.props;
     const initialValue = 0;
     return (
-      <div className='container-fluid text-light d-flex justify-content-between align-items-baseline p-5 fs-3'>
-        <img src={wallet} width={50} />
-        <span data-testid="total-field" className='text-success'>
+      <div className='container-fluid text-light d-flex justify-content-evenly align-items-baseline p-5 fs-6 flex-wrap gap-5'>
+        <img src={wallet} width={50} alt='logo' />
+        <div className='d-flex justify-content-end w-50 gap-2'>
+        <span data-testid="total-field" className='badge bg-success'>
           {expenses.length === 0 ? `${initialValue.toFixed(2)} BRL` : `${this.handleTotalExpenses()} BRL`}
         </span>
-        <span data-testid="email-field">
-          Email:
-          {' '}
+        <span data-testid="email-field" className='badge bg-secondary'>
           {email}
         </span>
+      </div>
       </div>
     );
   }

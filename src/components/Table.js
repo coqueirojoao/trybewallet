@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Button from '../assets/Button';
+import pen from '../media/pen.svg'
 import { deleteExpenseAction, enableEditForm } from '../redux/actions';
 
 class Table extends Component {
@@ -20,8 +21,8 @@ class Table extends Component {
       expensesInfo: { expenses },
     } = this.props;
     return (
-      <div className=''>
-        <table>
+      <div className='container mt-3 shadow p-4 rounded'>
+        <table className='table text-light text-center'>
           <thead>
             <tr>
               <th>Descrição</th>
@@ -56,18 +57,22 @@ class Table extends Component {
                   <td>{(+value * +exchangeRates[currency].ask).toFixed(2)}</td>
                   <td>Real</td>
                   <td>
-                    <Button
+                    <div className='d-flex justify-content-center gap-2'>
+                    <img
+                    src={pen}
+                    width={23}
                       datatestid="edit-btn"
                       onClick={ () => this.handleEdit(id) }
-                    >
-                      Editar
-                    </Button>
+                      className="pointer"
+                      alt='editicon'
+                    />
                     <Button
                       datatestid="delete-btn"
+                      className="btn-close btn-close-white"
                       onClick={ () => this.handleDelete(id) }
                     >
-                      Excluir
                     </Button>
+                    </div>
                   </td>
                 </tr>
               ),

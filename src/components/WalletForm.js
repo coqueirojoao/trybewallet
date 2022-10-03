@@ -15,14 +15,21 @@ class WalletForm extends Component {
     currency: 'USD',
     method: 'Dinheiro',
     tag: tagState,
+    disabled: true,
   };
 
   handleChange = ({ target }) => {
     const { name, value } = target;
     this.setState({
       [name]: value,
-    });
+    }, () => this.verifyConditions());
   };
+
+  verifyConditions = () => {
+    const valueRegEx = /^\d+$/;
+    const { value, description } = this.state;
+    return valueRegEx.test(value) && description.length > 1 ? this.setState({ disabled: false }) : this.setState({disabled: true})
+  }
 
   addExpense = () => {
     const { ratesDispatch } = this.props;
@@ -35,6 +42,7 @@ class WalletForm extends Component {
       currency,
       method,
       tag,
+      disabled: true,
     }));
   };
 
@@ -55,12 +63,13 @@ class WalletForm extends Component {
       currency: 'USD',
       method: 'Dinheiro',
       tag: tagState,
+      disabled: true,
     });
   };
 
   render() {
     const { option, editor } = this.props;
-    const { value, description, currency, method, tag } = this.state;
+    const { value, description, currency, method, tag, disabled } = this.state;
     return (
       <div className='container mt-2 text-light text-center'>
         <div className='container d-flex justify-content-center gap-5 flex-wrap'>
@@ -130,9 +139,9 @@ class WalletForm extends Component {
           </select>
         </label>
         {editor ? (
-          <Button onClick={ this.editExpense }>Editar despesa</Button>
+          <Button onClick={ this.editExpense } className={disabled ? 'btn btn-secondary w-50' : 'btn btn-primary w-50'} disabled={disabled}>Editar despesa</Button>
         ) : (
-          <Button onClick={ this.addExpense } className="btn btn-warning w-50">Adicionar despesa</Button>
+          <Button onClick={ this.addExpense } className={disabled ? 'btn btn-secondary w-50' : 'btn btn-warning w-50'} disabled={disabled}>Adicionar despesa</Button>
         )}
       </div>
       </div>
